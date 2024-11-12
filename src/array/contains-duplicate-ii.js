@@ -19,25 +19,16 @@
  * Output: false
  */
 
-/**
- * @param {number[]} nums
- * @param {number} k
- * @return {boolean}
- */
+console.clear()
 const containsNearbyDuplicate = (nums, k) => {
-  const map = new Map();
-
   for (let i = 0; i < nums.length; i++) {
-    const num = nums[i];
-
-    if (map.has(num) && i - map.get(num) <= k) {
-      return true;
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] === nums[j] && Math.abs(i - j) <= k) {
+        return true
+      }
     }
-
-    map.set(num, i);
   }
-
-  return false;
+  return false
 };
 
-export { containsNearbyDuplicate };
+console.log(containsNearbyDuplicate([1, 2, 3, 1], 3))

@@ -49,26 +49,21 @@
  */
 
 
-/**
- * @param {number[]} height
- * @return {number}
- */
-const maxArea = height => {
-  const n = height.length;
-  let max = 0;
-
-  for (let i = 0, j = n - 1; i < j;) {
-    const area = Math.min(height[i], height[j]) * (j - i);
-    max = Math.max(max, area);
-
-    if (height[i] < height[j]) {
-      i++;
-    } else {
-      j--;
+console.clear()
+let maxArea = height => {
+  let maior_vol_agua = 0
+  for (let i = 0; i < height.length; i++) {
+    for (let j = 0; j < height.length; j++) {
+      if (j != i) {
+        let area = Math.min(height[i], height[j]) * (height[i - 1])
+        if (area > maior_vol_agua) {
+          maior_vol_agua = area
+        }
+      }
     }
   }
+  return maior_vol_agua
+}
 
-  return max;
-};
-
-export { maxArea };
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7
+]))
